@@ -24,18 +24,17 @@ public class WeatherAPI {
 
             int choice = sc.nextInt();
             if (choice == 0) {
-		    System.out.println("Exited..")
+            	System.out.println("Exited..");
                 break;
             }
 
-            System.out.println("Enter the date (YYYY-MM-DD HH:mm:ss):");
+            System.out.println("Enter the date and time(YYYY-MM-DD HH:mm:ss):");
             String date = sc.next();
             String time = sc.next();
 
             switch (choice) {
                 case 1:
                     getWeather(date, time);
-                    
                     break;
                 case 2:
                     getWindSpeed(date, time);
@@ -47,7 +46,6 @@ public class WeatherAPI {
                     System.out.println("Invalid choice. Please try again.");
             }
         }
-
         sc.close();
     }
 
@@ -67,13 +65,13 @@ public class WeatherAPI {
 				if (forecastDate.equals(date) && forecastTime.equals(time)) {
                     JSONObject main = forecast.getJSONObject("main");
                     double temperature = main.getDouble("temp");
-                    System.out.println("Weather information for " + date + ":" + temperature );
+                    System.out.println("Weather information for " + date + " " + time + ":");
                     System.out.println("Temperature: " + temperature + "°C");
                     return;
                 }
             }
 
-            System.out.println("Weather information for " + date + " not found.");
+            System.out.println("Weather information for " + date + " " + time + " not found.");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -94,12 +92,12 @@ public class WeatherAPI {
                 if (forecastDate.equals(date) && forecastTime.equals(time)) {
                     JSONObject wind = forecast.getJSONObject("wind");
                     double windSpeed = wind.getDouble("speed");
-                    System.out.println("Wind speed for " + date + ": " + windSpeed + " m/s");
+                    System.out.println("Wind speed for " + date + " " + time + ": " + windSpeed + " m/s");
                     return;
                 }
             }
 
-            System.out.println("Wind speed for " + date + " not found.");
+            System.out.println("Wind speed for " + date + " " + time + " not found.");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -120,12 +118,12 @@ public class WeatherAPI {
                 if (forecastDate.equals(date) && forecastTime.equals(time)) {
                     JSONObject main = forecast.getJSONObject("main");
                     double pressure = main.getDouble("pressure");
-                    System.out.println("Pressure for " + date + ": " + pressure + " hPa");
+                    System.out.println("Pressure for " + date + " " +  time + ": " + pressure + " hPa");
                     return;
                 }
             }
 
-            System.out.println("Pressure for " + date + " not found.");
+            System.out.println("Pressure for " + date + " " +  time + " not found.");
         } catch (JSONException e) {
             e.printStackTrace();
         }
