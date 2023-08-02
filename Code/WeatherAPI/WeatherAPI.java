@@ -24,6 +24,7 @@ public class WeatherAPI {
 
             int choice = sc.nextInt();
             if (choice == 0) {
+		    System.out.println("Exited..")
                 break;
             }
 
